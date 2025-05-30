@@ -1,11 +1,13 @@
-import { useState } from "react";
-
-export default function UserInput() {
-  const [initialInvestment, setInitialInvestment] = useState(10000);
-  const [annualInvestment, setAnnualInvestment] = useState(1200);
-  const [expectedReturn, setExpectedReturn] = useState(6);
-  const [duration, setDuration] = useState(10);
-
+export default function UserInput({
+  initialInvestment,
+  annualInvestment,
+  expectedReturn,
+  duration,
+  onInitialInvestmentChange,
+  onAnnualInvestmentChange,
+  onExpectedReturnChange,
+  onDurationChange,
+}) {
   return (
     <div id="user-input">
       <div className="input-group">
@@ -14,7 +16,7 @@ export default function UserInput() {
           <input
             type="number"
             value={initialInvestment}
-            onChange={(event) => setInitialInvestment(event.target.value)}
+            onChange={(event) => onInitialInvestmentChange(event.target.value)}
             required
           ></input>
         </p>
@@ -23,7 +25,7 @@ export default function UserInput() {
           <input
             type="number"
             value={annualInvestment}
-            onChange={(event) => setAnnualInvestment(event.target.value)}
+            onChange={(event) => onAnnualInvestmentChange(event.target.value)}
             required
           ></input>
         </p>
@@ -34,7 +36,7 @@ export default function UserInput() {
           <input
             type="number"
             value={expectedReturn}
-            onChange={(event) => setExpectedReturn(event.target.value)}
+            onChange={(event) => onExpectedReturnChange(event.target.value)}
             required
           ></input>
         </p>
@@ -43,7 +45,7 @@ export default function UserInput() {
           <input
             type="number"
             value={duration}
-            onChange={(event) => setDuration(event.target.value)}
+            onChange={(event) => onDurationChange(event.target.value)}
             required
           ></input>
         </p>
