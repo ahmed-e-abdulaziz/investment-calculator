@@ -8,7 +8,7 @@ function App() {
   const [annualInvestment, setAnnualInvestment] = useState(1200);
   const [expectedReturn, setExpectedReturn] = useState(6);
   const [duration, setDuration] = useState(10);
-
+  const inputIsValid = duration > 0;
   return (
     <>
       <Header />
@@ -22,12 +22,16 @@ function App() {
         onExpectedReturnChange={(val) => setExpectedReturn((_) => +val)}
         onDurationChange={(val) => setDuration((_) => +val)}
       />
-      <Results
-        initialInvestment={initialInvestment}
-        annualInvestment={annualInvestment}
-        expectedReturn={expectedReturn}
-        duration={duration}
-      />
+      {inputIsValid ? (
+        <Results
+          initialInvestment={initialInvestment}
+          annualInvestment={annualInvestment}
+          expectedReturn={expectedReturn}
+          duration={duration}
+        />
+      ) : (
+        <p className="center">Please enter a duration greater than 0.</p>
+      )}
     </>
   );
 }
